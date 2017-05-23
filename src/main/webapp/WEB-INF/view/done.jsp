@@ -8,9 +8,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+${message}
+<br>
+${student.username}
+<br>
+${student.password}
+
+Done ya man
+
 </body>
 </html>

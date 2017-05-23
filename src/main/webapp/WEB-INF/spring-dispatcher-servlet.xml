@@ -13,6 +13,7 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
     <context:component-scan base-package="com.controllers"></context:component-scan>
+    <context:component-scan base-package="Entities"></context:component-scan>
 
     <mvc:annotation-driven></mvc:annotation-driven>
 
@@ -21,5 +22,31 @@
         <property name="suffix" value=".jsp"></property>
 
     </bean>
+    <!-- for css and js design  -->
+    <mvc:resources mapping="/resources/**" location="/WEB-INF/resources/" />
+
+
+    <!-- ****************************** To Define Class Interceptor in Your Application ******** -->
+
+    <!-- <mvc:interceptors> -->
+    <!-- <bean class="Interceptor.DayOfWeekInterceptor"></bean> -->
+    <!-- </mvc:interceptors> -->
+
+    <!-- ***** *************************  to collect all interceptor ******* -->
+    <mvc:interceptors>
+        <!-- *********** specific interceptor ************ -->
+        <mvc:interceptor>
+
+            <!-- mapping path that you want to make and execute this interceptor class -->
+            <mvc:mapping path="/" />
+            <!-- /spring/submitform.html -->
+            <bean class="Interceptor.DayOfWeekInterceptor"></bean>
+
+        </mvc:interceptor>
+
+    </mvc:interceptors>
+
+
+
 </beans>
 
