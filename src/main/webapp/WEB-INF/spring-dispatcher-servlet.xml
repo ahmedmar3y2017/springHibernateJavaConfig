@@ -16,6 +16,7 @@
     <context:component-scan base-package="Entities"></context:component-scan>
 
     <mvc:annotation-driven></mvc:annotation-driven>
+    <context:annotation-config></context:annotation-config>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/view/"></property>
@@ -46,6 +47,37 @@
 
     </mvc:interceptors>
 
+
+    <!-- ******************* properties file configuration ************************* -->
+    <!--<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">-->
+        <!--&lt;!&ndash;<property name="basename" value="webapp/WEB-INF/messages"></property>&ndash;&gt;-->
+        <!--<property name="basenames" >-->
+            <!--<list >-->
+                    <!--<value>message</value>-->
+            <!--</list>-->
+
+        <!--</property>-->
+           <!--</bean>-->
+
+<!--************************************** Exception Handle ******************************-->
+    <bean id="simpleMappingExceptionResolver" class=
+            "org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <map>
+                <entry key="NullPointerException" value="NullPointerException"/>
+                <entry key="IOException" value="IOException"/>
+                <entry key="ArithmeticException" value="ArithmeticException"/>
+
+            </map>
+        </property>
+
+        <!-- See note below on how this interacts with Spring Boot -->
+        <property name="defaultErrorView" value="error"/>
+
+        <!-- Name of logger to use to log exceptions. Unset by default,
+               so logging is disabled unless you set a value. -->
+        <property name="warnLogCategory" value="example.MvcLogger"/>
+    </bean>
 
 
 </beans>

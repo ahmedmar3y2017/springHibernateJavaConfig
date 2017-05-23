@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 /**
  * Created by ahmed on 5/22/2017.
@@ -54,7 +56,7 @@ public class controller {
     //
     // return modelAndView;
     // }
-    
+
  /*
  *    @InitBinder
     public void initBind(WebDataBinder webDataBinder) {
@@ -95,7 +97,24 @@ public class controller {
     // -------------------- welcome Jsp  Page -------------------------------
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView GetView() {
+    public ModelAndView GetView() throws IOException {
+//--------------------------------------------- Exception Handler  -------------------------
+
+        String message = "ss";
+        if (message.equalsIgnoreCase("nullpointer")) {
+
+            throw new NullPointerException("NUll ");
+
+        } else if (message.equalsIgnoreCase("IoException")) {
+
+            throw new IOException("IoException");
+
+        } else if (message.equalsIgnoreCase("ArthimaticException")) {
+
+            throw new ArithmeticException("ArthimaticException");
+
+        }
+
         ModelAndView modelAndView = new ModelAndView("hello");
 
         return modelAndView;
@@ -105,6 +124,7 @@ public class controller {
     //------------------------ login page  ----------------------------
     @RequestMapping(value = "/login.html", method = RequestMethod.POST)
     public ModelAndView LoginHtml(@Valid @ModelAttribute("student") student student, BindingResult bindingResult) {
+
 
         if (bindingResult.hasErrors()) {
 
@@ -162,6 +182,30 @@ public class controller {
 
 
         return modelAndView;
+
+    }
+
+    // ---------------------------------------- web service rest api  ------------------------------------
+
+    //------------------------------------- retrieve all students -------------------------------
+    @ResponseBody
+    @RequestMapping(value = "/students", method = RequestMethod.GET)
+    public ArrayList<student> GetREst() {
+        ArrayList<student> arrayList = new ArrayList<student>();
+
+        student student1 = new student();
+        student1.setUsername("ahmed");
+        student student2 = new student();
+        student2.setUsername("mohamed");
+        student student3 = new student();
+        student3.setUsername("eslam");
+
+
+        arrayList.add(student1);
+        arrayList.add(student2);
+        arrayList.add(student3);
+
+        return arrayList;
 
     }
 
