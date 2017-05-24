@@ -185,29 +185,6 @@ public class controller {
 
     }
 
-    // ---------------------------------------- web service rest api  ------------------------------------
-
-    //------------------------------------- retrieve all students -------------------------------
-    @ResponseBody
-    @RequestMapping(value = "/students", method = RequestMethod.GET)
-    public ArrayList<student> GetREst() {
-        ArrayList<student> arrayList = new ArrayList<student>();
-
-        student student1 = new student();
-        student1.setUsername("ahmed");
-        student student2 = new student();
-        student2.setUsername("mohamed");
-        student student3 = new student();
-        student3.setUsername("eslam");
-
-
-        arrayList.add(student1);
-        arrayList.add(student2);
-        arrayList.add(student3);
-
-        return arrayList;
-
-    }
 
 
 }
