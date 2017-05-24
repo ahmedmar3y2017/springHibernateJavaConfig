@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
@@ -17,7 +18,11 @@ import java.util.Date;
 @JsonIgnoreProperties({"id","student_mobile"})
 //----------- to order json --------------------
 @JsonPropertyOrder({"student_name" ,"student_password" ,"student_birthdate","student_mobile"})
+@Entity
+@Table
 public class student {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @Size(min = 3, max = 5, message = "Username Size Not Available ")
     //----- to name json key  -------
