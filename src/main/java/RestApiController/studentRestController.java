@@ -95,7 +95,18 @@ public class studentRestController {
         httpHeaders.add("location", ServletUriComponentsBuilder.fromCurrentRequest().path("/{name}").buildAndExpand(student.getUsername()).toUri().toString());
 
 
-        return new ResponseEntity<Boolean>(true,httpHeaders, HttpStatus.OK);
+        return new ResponseEntity<Boolean>(true, httpHeaders, HttpStatus.OK);
+    }
+
+    // --------------------------- delete method -------------------------------
+    // ------------------------------------ delete specific student --------------------------
+    @RequestMapping(value = "/students/{name}", method = RequestMethod.DELETE)
+    public ResponseEntity<Boolean> DeleteStudent(@PathVariable("name") String name) {
+
+        System.out.println("Stude name is : " + name);
+
+
+        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
 
 
