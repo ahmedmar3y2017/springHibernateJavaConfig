@@ -1,11 +1,29 @@
 package Entities;
 
-import java.util.List;
+import org.hibernate.SessionFactory;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Created by ahmed on 5/24/2017.
+ * Created by ahmed on 5/26/2017.
  */
-public interface studentDao {
-    public List<student> list();
+public class studentDao {
+
+
+    private SessionFactory sessionFactory;
+
+    public SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }
+
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+    @Transactional
+    public void insert(student student) {
+
+        sessionFactory.getCurrentSession().save(student);
+
+    }
+
 
 }

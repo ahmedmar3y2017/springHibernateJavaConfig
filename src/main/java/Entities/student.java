@@ -1,5 +1,6 @@
 package Entities;
 
+
 import addressValid.IsvalidAddress;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -15,9 +16,9 @@ import java.util.Date;
 // ----------- (filter) ignore Null Values from Json --------
 @JsonInclude(JsonInclude.Include.NON_NULL)
 // --------- to ignore specific information about web service and json --------
-@JsonIgnoreProperties({"id","student_mobile"})
+@JsonIgnoreProperties({"id", "student_mobile"})
 //----------- to order json --------------------
-@JsonPropertyOrder({"student_name" ,"student_password" ,"student_birthdate","student_mobile"})
+@JsonPropertyOrder({"student_name", "student_password", "student_birthdate", "student_mobile"})
 @Entity
 @Table
 public class student {
@@ -39,15 +40,15 @@ public class student {
     @JsonProperty("student_mobile")
     private Long mobile;
 
-    @Past(message = "should be in the past ")
+//    @Past(message = "should be in the past ")
     @JsonProperty("student_birthdate")
     private Date birthDate;
 
     public student() {
     }
 
-    public student(int id, String username, String password, String address, Long mobile, Date birthDate) {
-        this.id = id;
+    public student( String username, String password, String address, Long mobile, Date birthDate) {
+
         this.username = username;
         this.password = password;
         this.address = address;

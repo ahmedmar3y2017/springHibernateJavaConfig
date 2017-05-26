@@ -4,7 +4,10 @@
 package com.controllers;
 
 import Entities.student;
+import Entities.studentDao;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,7 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by ahmed on 5/22/2017.
@@ -114,6 +117,12 @@ public class controller {
             throw new ArithmeticException("ArthimaticException");
 
         }
+
+        // ------------------------- Hibernate Operation -------------------------
+//        ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+//        studentDao studentDao = (Entities.studentDao) context.getBean("d");
+//        studentDao.insert(new student("aaa", "123", "shebin", Long.parseLong("123"), new Date()));
+
 
         ModelAndView modelAndView = new ModelAndView("hello");
 
