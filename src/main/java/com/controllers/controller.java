@@ -4,6 +4,7 @@
 package com.controllers;
 
 import Entities.student;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import service.studentService;
 
 import javax.validation.Valid;
 import java.io.IOException;
@@ -21,7 +23,19 @@ import java.text.SimpleDateFormat;
  */
 @Controller
 public class controller {
-      /*
+
+
+//    @Autowired(required = true)
+//    studentService studentService;
+//
+//    public service.studentService getStudentService() {
+//        return studentService;
+//    }
+//
+//    public void setStudentService(service.studentService studentService) {
+//        this.studentService = studentService;
+//    }
+    /*
    * -------------------------- using path variable as string -------------------------------
    *
    * @RequestMapping("/welcome/{username}") protected ModelAndView
@@ -76,6 +90,7 @@ public class controller {
     @InitBinder
     public void initBind(WebDataBinder webDataBinder) {
 // ------------- disallaw field ..........
+//        studentService.
         webDataBinder.setDisallowedFields(new String[]{"repeat_password"});
         // ----------- date formate -------------------------
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy***mm***dd");
@@ -189,7 +204,6 @@ public class controller {
         return modelAndView;
 
     }
-
 
 
 }

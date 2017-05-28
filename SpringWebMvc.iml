@@ -75,5 +75,6 @@
     <orderEntry type="library" name="Maven: com.fasterxml:classmate:1.1.0" level="project" />
     <orderEntry type="library" name="Maven: javax.el:javax.el-api:2.2.4" level="project" />
     <orderEntry type="library" name="Maven: org.glassfish.web:javax.el:2.2.4" level="project" />
+    <orderEntry type="library" name="hibernate-entitymanager-4.2.2.final" level="project" />
   </component>
 </module>
