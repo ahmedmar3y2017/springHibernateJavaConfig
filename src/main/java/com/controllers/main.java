@@ -19,8 +19,6 @@ public class main {
 
         AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         studentService service = (studentService) context.getBean("studentService");
-
-
         List<student> list = service.GetAllStudents();
 
         for (student student : list) {

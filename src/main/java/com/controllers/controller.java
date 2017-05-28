@@ -4,8 +4,11 @@
 package com.controllers;
 
 import Entities.student;
+import configuration.AppConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,6 +20,7 @@ import service.studentService;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 /**
  * Created by ahmed on 5/22/2017.
@@ -24,17 +28,18 @@ import java.text.SimpleDateFormat;
 @Controller
 public class controller {
 
+    // -------------------- database autowired syudent service ----------------------------
+    @Autowired(required = true)
+    studentService studentService;
 
-//    @Autowired(required = true)
-//    studentService studentService;
-//
-//    public service.studentService getStudentService() {
-//        return studentService;
-//    }
-//
-//    public void setStudentService(service.studentService studentService) {
-//        this.studentService = studentService;
-//    }
+    //
+    public service.studentService getStudentService() {
+        return studentService;
+    }
+
+    public void setStudentService(service.studentService studentService) {
+        this.studentService = studentService;
+    }
     /*
    * -------------------------- using path variable as string -------------------------------
    *
@@ -129,12 +134,14 @@ public class controller {
 
         }
 
-        // ------------------------- Hibernate Operation -------------------------
-//        ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
-//        studentDao studentDao = (Entities.studentDao) context.getBean("d");
-//        studentDao.insert(new student("aaa", "123", "shebin", Long.parseLong("123"), new Date()));
+//        // ------------------------- Hibernate Operation -------------------------
+        List<student> students = studentService.GetAllStudents();
+        for (student student : students) {
 
+            System.out.println(student.getUsername() + "\t" + student.getAddress());
 
+        }
+        // ---------------------------------------------------------
         ModelAndView modelAndView = new ModelAndView("hello");
 
         return modelAndView;
