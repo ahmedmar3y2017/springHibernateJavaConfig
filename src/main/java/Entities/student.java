@@ -25,18 +25,18 @@ public class student {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @Size(min = 3, max = 5, message = "Username Size Not Available ")
+//    @Size(min = 3, max = 5, message = "Username Size Not Available ")
     //----- to name json key  -------
     @JsonProperty("student_name")
     private String username;
 
     @JsonProperty("student_password")
     private String password;
-    @IsvalidAddress(ListOfAddress = "tanta|cairo|shebin")
+//    @IsvalidAddress(ListOfAddress = "tanta|cairo|shebin")
     @JsonProperty("student_address")
     private String address;
 
-    @Max(value = 1000, message = "NUmber <1000 ")
+//    @Max(value = 1000, message = "NUmber <1000 ")
     @JsonProperty("student_mobile")
     private Long mobile;
 

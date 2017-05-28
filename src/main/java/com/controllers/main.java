@@ -1,31 +1,36 @@
 package com.controllers;
 
 import Entities.student;
-import Entities.studentDao;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import configuration.AppConfig;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.AbstractApplicationContext;
+import service.studentService;
 
 import java.util.Date;
+import java.util.List;
 
 /**
- * Created by ahmed on 5/26/2017.
+ * Created by ahmed on 5/28/2017.
  */
-
 public class main {
-    /*
-    *
-    *     this.id = id;
-            this.username = username;
-            this.password = password;
-            this.address = address;
-            this.mobile = mobile;
-            this.birthDate = birthDate;
-    * */
+
+
     public static void main(String[] args) {
-        ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
-        studentDao studentDao = (Entities.studentDao) context.getBean("d");
-        studentDao.insert(new student("ahme", "123", "tanta", Long.parseLong("123"), new Date()));
+
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        studentService service = (studentService) context.getBean("studentService");
+
+
+        List<student> list = service.GetAllStudents();
+
+        for (student student : list) {
+
+
+            System.out.println(student.getUsername() + "       \t " + student.getAddress());
+
+        }
+
+//        context.close();
 
     }
-
 }

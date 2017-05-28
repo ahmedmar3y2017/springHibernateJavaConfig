@@ -4,10 +4,7 @@
 package com.controllers;
 
 import Entities.student;
-import Entities.studentDao;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,7 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * Created by ahmed on 5/22/2017.
